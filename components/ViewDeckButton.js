@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 class ViewDeckButton extends Component {
+
   render() {
     return (
-      <TouchableOpacity 
-      key={this.props.title}
+      <TouchableOpacity
+      key={this.props.deck.title}
       style={styles.viewDeckButton}
       onPress={() => {
         this.props.navigation.navigate(
           'DeckView',
-          { title: this.props.title }
+          { deck: this.props.deck }
         )
       }}>
-        <Text style={styles.deckTitleText}>{this.props.title}</Text>
-        <Text style={styles.deckCardsText}>Cards: {this.props.size}</Text>
+        <Text style={styles.deckTitleText}>{this.props.deck.title}</Text>
+        <Text style={styles.deckCardsText}>Cards: {this.props.deck.cards.length}</Text>
       </TouchableOpacity>
     );
   }

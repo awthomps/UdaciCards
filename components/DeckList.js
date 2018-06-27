@@ -9,14 +9,17 @@ class DeckList extends Component {
   }
 
   componentDidMount() {
+    this.fetchDecks();
+  }
+
+  fetchDecks = () => {
     API.fetchDecks()
     .then((keyValueDecks) => {
       let tempDecks = Object.keys(keyValueDecks).map((key) => {
-        debugger
         return {
           key: key,
           title: keyValueDecks[key].title,
-          size: keyValueDecks[key].cards.length,
+          cards: keyValueDecks[key].cards,
         }
       });
       
@@ -33,7 +36,7 @@ class DeckList extends Component {
       <View style={styles.deckTitleList}>
         <FlatList
           data={this.state.decks}
-          renderItem={({item}) => <ViewDeckButton navigation={this.props.navigation} {...item}/>}
+          renderItem={({item}) => <ViewDeckButton navigation={this.props.navigation} deck={item}/>}
         />
       </View>
     );
