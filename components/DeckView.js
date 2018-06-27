@@ -4,11 +4,16 @@ import { View, Text } from 'react-native';
 
 
 class DeckView extends Component {
-
+  static navigationOptions = ({ navigation }) => {
+    const { title } = navigation.state.params
+    return {
+      title: title
+    }
+  }
   render() {
     return (
       <View>
-        <Text>{this.props.navigation.state.params.title}</Text>
+        <Text>This is a DeckView</Text>
       </View>
     )
   }

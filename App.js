@@ -2,13 +2,38 @@ import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import DeckList from './components/DeckList';
 import { Constants } from 'expo';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
 import DeckView from './components/DeckView';
+import AddDeckView from './components/AddDeckView';
 
-
-const MainNavigator = createStackNavigator({
+const Tabs = createMaterialTopTabNavigator({
   Decks: {
     screen: DeckList,
+    navigationOptions: {
+      tabBarLabel: 'Deck List',
+      tabBarOptions : {
+        style: {
+          backgroundColor: 'orange',
+        }
+      }
+    }
+  },
+  AddDeck: {
+    screen: AddDeckView,
+    navigationOptions: {
+      tabBarLabel: 'Add New Deck',
+      tabBarOptions : {
+        style: {
+          backgroundColor: 'orange',
+        }
+      }
+    }
+  },
+})
+
+const MainNavigator = createStackNavigator({
+  Home: {
+    screen: Tabs,
     navigationOptions: {
       header: null
     }
@@ -36,6 +61,7 @@ export default class App extends React.Component {
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
