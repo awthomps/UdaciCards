@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     margin: 10,
     backgroundColor: 'orange',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   deckTitleText: {
     color: 'white',
