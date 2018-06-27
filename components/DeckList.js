@@ -1,35 +1,102 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, ScrollView } from 'react-native'
 
 class DeckList extends Component {
   state = {
     decks: [
       {
+        key: 'Basic Japanese',
         title: 'Basic Japanese',
         size: '20',
       },
       {
+        key: 'React',
         title: 'React',
         size: '50',
-      }
+      },
+      {
+        key: 'React1',
+        title: 'React1',
+        size: '50',
+      },
+      {
+        key: 'React2',
+        title: 'React2',
+        size: '50',
+      },
+      {
+        key: 'React3',
+        title: 'React3',
+        size: '50',
+      },
+      {
+        key: 'React4',
+        title: 'React4',
+        size: '50',
+      },
+      {
+        key: 'React5',
+        title: 'React5',
+        size: '50',
+      },
+      {
+        key: 'React6',
+        title: 'React6',
+        size: '50',
+      },
+      {
+        key: 'React7',
+        title: 'React7',
+        size: '50',
+      },
+      {
+        key: 'React8',
+        title: 'React8',
+        size: '50',
+      },
+      {
+        key: 'React9',
+        title: 'React9',
+        size: '50',
+      },
+      {
+        key: 'React10',
+        title: 'React10',
+        size: '50',
+      },
+      {
+        key: 'React11',
+        title: 'React11',
+        size: '50',
+      },
+      {
+        key: 'React12',
+        title: 'React12',
+        size: '50',
+      },
     ]
   }
   render() {
+
+
     return (
       <View style={styles.deckTitleList}>
-        {
-          this.state.decks.map((deck) => {
-            return (
-              <View key={'title_' + deck.title} style={styles.deckTitle}>
-                <Text style={styles.deckTitleText}>{deck.title}</Text>
-                <Text style={styles.deckTitleText}>Cards: {deck.size}</Text>
-              </View>
-            )
-          })
-        }
+        <FlatList
+          data={this.state.decks}
+          renderItem={({item}) => <DeckButton {...item}/>}
+        />
       </View>
     );
   }
+}
+
+function DeckButton ({key, title, size}) {
+  return (
+    <TouchableOpacity key={key} style={styles.deckTitle}>
+      <Text style={styles.deckTitleText}>{title}</Text>
+      <Text style={styles.deckCardsText}>Cards: {size}</Text>
+    </TouchableOpacity>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -47,6 +114,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 22,
   },
+  deckCardsText: {
+    color: 'grey',
+    fontSize: 18,
+  }
   
 })
 
