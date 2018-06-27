@@ -1,82 +1,31 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import ViewDeckButton from './ViewDeckButton'
+import * as API from '../utils/api'
 
 class DeckList extends Component {
   state = {
-    decks: [
-      {
-        key: 'Basic Japanese',
-        title: 'Basic Japanese',
-        size: '20',
-      },
-      {
-        key: 'React',
-        title: 'React',
-        size: '50',
-      },
-      {
-        key: 'React1',
-        title: 'React1',
-        size: '50',
-      },
-      {
-        key: 'React2',
-        title: 'React2',
-        size: '50',
-      },
-      {
-        key: 'React3',
-        title: 'React3',
-        size: '50',
-      },
-      {
-        key: 'React4',
-        title: 'React4',
-        size: '50',
-      },
-      {
-        key: 'React5',
-        title: 'React5',
-        size: '50',
-      },
-      {
-        key: 'React6',
-        title: 'React6',
-        size: '50',
-      },
-      {
-        key: 'React7',
-        title: 'React7',
-        size: '50',
-      },
-      {
-        key: 'React8',
-        title: 'React8',
-        size: '50',
-      },
-      {
-        key: 'React9',
-        title: 'React9',
-        size: '50',
-      },
-      {
-        key: 'React10',
-        title: 'React10',
-        size: '50',
-      },
-      {
-        key: 'React11',
-        title: 'React11',
-        size: '50',
-      },
-      {
-        key: 'React12',
-        title: 'React12',
-        size: '50',
-      },
-    ]
+    decks: []
   }
+
+  componentDidMount() {
+    API.fetchDecks()
+    .then((keyValueDecks) => {
+      let tempDecks = Object.keys(keyValueDecks).map((key) => {
+        debugger
+        return {
+          key: key,
+          title: keyValueDecks[key].title,
+          size: keyValueDecks[key].cards.length,
+        }
+      });
+      
+      this.setState({
+        decks: tempDecks,
+      });
+    });
+  }
+
   render() {
 
 
