@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, FlatList, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, ScrollView } from 'react-native';
+import ViewDeckButton from './ViewDeckButton'
 
 class DeckList extends Component {
   state = {
@@ -83,32 +84,17 @@ class DeckList extends Component {
       <View style={styles.deckTitleList}>
         <FlatList
           data={this.state.decks}
-          renderItem={({item}) => <DeckButton {...item}/>}
+          renderItem={({item}) => <ViewDeckButton navigation={this.props.navigation} {...item}/>}
         />
       </View>
     );
   }
 }
 
-function DeckButton ({key, title, size}) {
-  return (
-    <TouchableOpacity key={key} style={styles.deckTitle}>
-      <Text style={styles.deckTitleText}>{title}</Text>
-      <Text style={styles.deckCardsText}>Cards: {size}</Text>
-    </TouchableOpacity>
-  )
-}
-
 const styles = StyleSheet.create({
   deckTitleList: {
     flex: 1,
     justifyContent: 'flex-start',
-  },
-  deckTitle: {
-    height: 60,
-    margin: 10,
-    backgroundColor: 'orange',
-    alignItems: 'center',
   },
   deckTitleText: {
     color: 'white',
