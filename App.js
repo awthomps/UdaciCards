@@ -5,6 +5,9 @@ import { Constants } from 'expo';
 import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
 import DeckView from './components/DeckView';
 import AddDeckView from './components/AddDeckView';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
 
 const Tabs = createMaterialTopTabNavigator({
   Decks: {
@@ -52,12 +55,14 @@ const MainNavigator = createStackNavigator({
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <View style={{backgroundColor: 'orange', height: Constants.statusBarHeight}}>
-          <StatusBar translucent backgroundColor={'#FFA500'} barStyle='light-content'/>
+      <Provider store={createStore(reducer)}>
+        <View style={styles.container}>
+          <View style={{backgroundColor: 'orange', height: Constants.statusBarHeight}}>
+            <StatusBar translucent backgroundColor={'#FFA500'} barStyle='light-content'/>
+          </View>
+          <MainNavigator/>
         </View>
-        <MainNavigator/>
-      </View>
+      </Provider>
     );
   }
 }
