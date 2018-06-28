@@ -4,12 +4,9 @@ import ViewDeckButton from './ViewDeckButton'
 import * as API from '../utils/api'
 
 class DeckList extends Component {
-  state = {
-    decks: []
-  }
 
-  componentDidMount() {
-    this.fetchDecks();
+  state = {
+    decks: {}
   }
 
   fetchDecks = () => {
@@ -29,14 +26,24 @@ class DeckList extends Component {
     });
   }
 
+  componentDidMount() {
+    this.fetchDecks();
+  }
+
+  componentWillReceiveProps() {
+    //TODO: this needs to be called on a focus or will focus
+    this.fetchDecks();
+  }
+
   render() {
-
-
     return (
       <View style={styles.deckTitleList}>
         <FlatList
           data={this.state.decks}
           renderItem={({item}) => <ViewDeckButton navigation={this.props.navigation} deck={item}/>}
+          ListEmptyComponent={<View style={styles.emptyTextView}>
+              <Text style={styles.emptyText}>No Decks Present</Text>
+            </View>}
         />
       </View>
     );
@@ -48,7 +55,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
   },
-  deckTitleText: {
+  emptyTextView: {
+    height: 60,
+    margin: 10,
+    backgroundColor: 'orange',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  emptyText: {
     color: 'white',
     fontSize: 22,
   },
