@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import CreateNewQuestionButton from './CreateNewQuestionButton';
 
 
 
@@ -13,7 +14,9 @@ class DeckView extends Component {
   render() {
     return (
       <View>
-        <Text>This is a DeckView</Text>
+        <Text>{this.props.navigation.state.params.deck.title}</Text>
+        <Text>{this.props.navigation.state.params.deck.cards.length}</Text>
+        <CreateNewQuestionButton title={this.props.navigation.state.params.deck.title}/>
       </View>
     )
   }

@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
 
-class ViewDeckButton extends Component {
+class CreateNewQuestionButton extends Component {
 
   render() {
     return (
       <TouchableOpacity
       key={this.props.deck.title}
-      style={styles.viewDeckButton}
+      style={styles.viewQuestionButton}
       onPress={() => {
         this.props.navigation.navigate(
-          'DeckView',
-          { deck: this.props.deck }
+          'NewQuestionView',
+          { title: this.props.deck.title }
         )
       }}>
-        <Text style={styles.deckTitleText}>{this.props.deck.title}</Text>
-        <Text style={styles.deckCardsText}>Cards: {this.props.deck.cards.length}</Text>
+        <Text style={styles.newQuestionText}>Add Card</Text>
       </TouchableOpacity>
     );
   }
@@ -23,22 +23,25 @@ class ViewDeckButton extends Component {
 
 
 const styles = StyleSheet.create({
-  viewDeckButton: {
+  viewQuestionButton: {
     height: 60,
     margin: 10,
     backgroundColor: 'orange',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  deckTitleText: {
+  newQuestionText: {
     color: 'white',
     fontSize: 22,
   },
-  deckCardsText: {
-    color: 'grey',
-    fontSize: 18,
-  }
   
 })
 
-export default ViewDeckButton;
+function mapStateToProps (keyValueDecks, props) {
+  return {deck: keyValueDecks[props.title]};
+
+}
+
+export default connect(
+  mapStateToProps,
+)(CreateNewQuestionButton);
