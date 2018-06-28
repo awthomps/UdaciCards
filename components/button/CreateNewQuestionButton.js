@@ -37,11 +37,4 @@ const styles = StyleSheet.create({
   
 })
 
-function mapStateToProps (keyValueDecks, props) {
-  return {deck: keyValueDecks[props.navigation.state.params.title]};
-
-}
-
-export default connect(
-  mapStateToProps,
-)(CreateNewQuestionButton);
+export default connect()(CreateNewQuestionButton);

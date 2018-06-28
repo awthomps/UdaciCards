@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import CreateNewQuestionButton from './CreateNewQuestionButton';
+import CreateNewQuestionButton from './button/CreateNewQuestionButton';
+import StartQuizButton from './button/StartQuizButton';
 
 
 
@@ -19,6 +20,10 @@ class DeckView extends Component {
           <Text style={styles.deckTitleText}>Title: {this.props.navigation.state.params.deck.title}</Text>
           <Text style={styles.deckCardsText}>Cards: {this.props.navigation.state.params.deck.cards.length}</Text>
         </View>
+        <StartQuizButton
+        navigation={this.props.navigation}
+        title={this.props.navigation.state.params.deck.title}
+        />
         <CreateNewQuestionButton
           navigation={this.props.navigation}
           title={this.props.navigation.state.params.deck.title}

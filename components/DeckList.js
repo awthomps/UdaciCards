@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, ScrollView } from 'react-native';
-import ViewDeckButton from './ViewDeckButton'
+import ViewDeckButton from './button/ViewDeckButton'
 import { getDecks } from '../actions'
 import { connect } from 'react-redux';
 
