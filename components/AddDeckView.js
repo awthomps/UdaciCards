@@ -24,14 +24,16 @@ class AddDeckView extends Component {
       title: this.state.deckTitle,
       cards: []
     }
+
+    postDispatch = () => {
+      this.input.clearText();
+      this.changeTitle('');
+      this.props.navigation.navigate('DeckView',{ deck: deck });
+    }
     putDeck({
       deck: deck,
       key : this.state.deckTitle,
-    })(dispatch);
-    this.input.clearText();
-    this.changeTitle('');
-    this.props.navigation.navigate('DeckView',{ deck: deck });
-
+    })(dispatch)(postDispatch);
   }
 
   render() {

@@ -7,12 +7,13 @@ class CreateNewQuestionButton extends Component {
   render() {
     return (
       <TouchableOpacity
-      key={this.props.deck.title}
+      key={this.props.title}
       style={styles.viewQuestionButton}
       onPress={() => {
+        debugger
         this.props.navigation.navigate(
           'NewQuestionView',
-          { title: this.props.deck.title }
+          { title: this.props.title }
         )
       }}>
         <Text style={styles.newQuestionText}>Add Card</Text>
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps (keyValueDecks, props) {
-  return {deck: keyValueDecks[props.title]};
+  return {deck: keyValueDecks[props.navigation.state.params.title]};
 
 }
 

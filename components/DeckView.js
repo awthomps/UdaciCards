@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import CreateNewQuestionButton from './CreateNewQuestionButton';
 
 
@@ -13,13 +13,37 @@ class DeckView extends Component {
   }
   render() {
     return (
-      <View>
-        <Text>{this.props.navigation.state.params.deck.title}</Text>
-        <Text>{this.props.navigation.state.params.deck.cards.length}</Text>
-        <CreateNewQuestionButton title={this.props.navigation.state.params.deck.title}/>
+      <View style={{flex: 1}}>
+        <View style={styles.deckInfoView}>
+          
+          <Text style={styles.deckTitleText}>Title: {this.props.navigation.state.params.deck.title}</Text>
+          <Text style={styles.deckCardsText}>Cards: {this.props.navigation.state.params.deck.cards.length}</Text>
+        </View>
+        <CreateNewQuestionButton
+          navigation={this.props.navigation}
+          title={this.props.navigation.state.params.deck.title}
+        />
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  deckInfoView : {
+    height: 60,
+    margin: 10,
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  deckTitleText: {
+    color: 'white',
+    fontSize: 22,
+  },
+  deckCardsText: {
+    color: 'black',
+    fontSize: 18,
+  }
+})
 
 export default DeckView;

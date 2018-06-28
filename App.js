@@ -8,6 +8,7 @@ import AddDeckView from './components/AddDeckView';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
+import NewQuestionView from './components/NewQuestionView';
 
 const Tabs = createMaterialTopTabNavigator({
   Decks: {
@@ -27,7 +28,7 @@ const Tabs = createMaterialTopTabNavigator({
       tabBarLabel: 'Add New Deck',
       tabBarOptions : {
         style: {
-          backgroundColor: 'orange',
+          backgroundColor: 'pink',
         }
       }
     }
@@ -47,6 +48,15 @@ const MainNavigator = createStackNavigator({
       headerTintColor: 'white',
       headerStyle: {
         backgroundColor: 'red',
+      }
+    }
+  },
+  NewQuestionView: {
+    screen: NewQuestionView,
+    navigationOptions: {
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: 'lightblue',
       }
     }
   }

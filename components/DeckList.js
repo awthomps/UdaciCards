@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   emptyTextView: {
     height: 60,
     margin: 10,
-    backgroundColor: 'orange',
+    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
   },

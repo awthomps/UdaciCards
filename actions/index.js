@@ -25,9 +25,12 @@ export function addDeck(deck, key) {
   }
 }
 
-export const putDeck = ({deck, key}) => dispatch => (
+export const putDeck = ({deck, key}) => dispatch => postDispatch => (
   API.submitDeck({deck, key})
   .then(() => {
-    dispatch(addDeck(deck, key))
+    dispatch(addDeck(deck, key));
+    if(postDispatch) {
+      postDispatch();
+    }
   })
 )
