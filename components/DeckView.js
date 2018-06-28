@@ -23,6 +23,7 @@ class DeckView extends Component {
         <StartQuizButton
         navigation={this.props.navigation}
         title={this.props.navigation.state.params.deck.title}
+        moreThanOneCard={this.props.navigation.state.params.deck.cards.length > 0}
         />
         <CreateNewQuestionButton
           navigation={this.props.navigation}

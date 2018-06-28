@@ -10,12 +10,14 @@ class StartQuizButton extends Component {
       key={this.props.title}
       style={styles.startQuizView}
       onPress={() => {
-        this.props.navigation.navigate(
-          'QuizView',
-          { title: this.props.title }
-        )
+        if(this.props.moreThanOneCard) {
+          this.props.navigation.navigate(
+            'QuizView',
+            { title: this.props.title }
+          )
+        }
       }}>
-        <Text style={styles.startQuizText}>Start Quiz</Text>
+        <Text style={styles.startQuizText}>{this.props.moreThanOneCard ? 'Start Quiz' : 'Add cards to deck first'}</Text>
       </TouchableOpacity>
     );
   }
