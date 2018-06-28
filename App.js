@@ -9,6 +9,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import NewQuestionView from './components/NewQuestionView';
+import QuizView from './components/QuizView'
 
 
 // Attempt to clean up this isMounted bug.
@@ -68,6 +69,15 @@ const MainNavigator = createStackNavigator({
       headerTintColor: 'white',
       headerStyle: {
         backgroundColor: 'lightblue',
+      }
+    }
+  },
+  QuizView: {
+    screen: QuizView,
+    navigationOptions: {
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: 'blue',
       }
     }
   }
