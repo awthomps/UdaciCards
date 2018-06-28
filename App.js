@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import NewQuestionView from './components/NewQuestionView';
 import QuizView from './components/QuizView'
+import { setLocalNotification } from './utils/helpers'
 
 
 // Attempt to clean up this isMounted bug.
@@ -84,6 +85,10 @@ const MainNavigator = createStackNavigator({
 })
 
 export default class App extends React.Component {
+  componentDidMount() {
+    debugger
+    setLocalNotification();
+  }
   render() {
     return (
       <Provider store={createStore(reducer)}>

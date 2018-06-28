@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import { clearLocalNotification, setLocalNotification } from './../utils/helpers';
 
 
 question = 'question';
@@ -50,6 +51,10 @@ class QuizView extends Component {
         if(nextCard >= this.props.cards.length) {
           nextCard--; // decrement to avoid any worst case oob errors.
           nextStep = results; // go to results screen state
+
+          // Delay notification because today the user has quized
+          clearLocalNotification()
+            .then(setLocalNotification)
         } else {
           nextStep = question;
         }
