@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
-import * as API from '../utils/api'
+import { connect } from 'react-redux';
+import { putDeck } from '../actions'
 
 
 
@@ -18,18 +19,18 @@ class AddDeckView extends Component {
   }
 
   submitDeck = () => {
+    const { dispatch } = this.props;
     let deck = {
       title: this.state.deckTitle,
       cards: []
     }
-    API.submitDeck({
+    putDeck({
       deck: deck,
       key : this.state.deckTitle,
-    }).then(() => {
-      this.input.clearText();
-      this.changeTitle('')
-      this.props.navigation.navigate('DeckView',{ deck: deck })
-    })
+    })(dispatch);
+    this.input.clearText();
+    this.changeTitle('');
+    this.props.navigation.navigate('DeckView',{ deck: deck });
 
   }
 
@@ -68,4 +69,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default AddDeckView;
+export default connect()(AddDeckView);

@@ -12,17 +12,22 @@ export function fetchDecks(decks) {
 
 export const getDecks = () => dispatch => (
   API.fetchDecks()
-  .then(decks => dispatch(fetchDecks(decks)))
+  .then(decks => {
+    dispatch(fetchDecks(API.formatDecks(decks)))
+  })
 )
 
-export function addDeck(deck) {
+export function addDeck(deck, key) {
   return {
     type: ADD_DECK,
     deck,
+    key,
   }
 }
 
-export const putDeck = (deck) => dispatch => (
-  API.submitDeck(deck)
-  .then((deck) => dispatch(addDeck(deck)))
+export const putDeck = ({deck, key}) => dispatch => (
+  API.submitDeck({deck, key})
+  .then(() => {
+    dispatch(addDeck(deck, key))
+  })
 )

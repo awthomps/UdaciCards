@@ -10,10 +10,12 @@ function decks(state = {}, action) {
     case ADD_DECK:
       return {
         ...state,
-        ...action.deck,
+        [action.key]: action.deck,
       }
     default:
       return state
     
   }
 }
+
+export default decks;

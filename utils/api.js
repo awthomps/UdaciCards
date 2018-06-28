@@ -5,10 +5,9 @@ const DECKS_STORAGE_KEY = 'UdaciCards:decks';
 
 export function fetchDecks() {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY)
-    .then(formatDecks);
 }
 
-function formatDecks(decks) {
+export function formatDecks(decks) {
   return decks === null
     ? {}
     : JSON.parse(decks)
