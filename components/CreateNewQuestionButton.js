@@ -10,7 +10,6 @@ class CreateNewQuestionButton extends Component {
       key={this.props.title}
       style={styles.viewQuestionButton}
       onPress={() => {
-        debugger
         this.props.navigation.navigate(
           'NewQuestionView',
           { title: this.props.title }

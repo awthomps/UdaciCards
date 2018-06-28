@@ -34,15 +34,12 @@ class NewQuestionView extends Component {
   }
 
   submitDeck = () => {
-    debugger
     const { dispatch } = this.props;
     let deck = {
       title: this.props.title,
       cards: [ ...this.props.cards, { question: this.state.question, answer: this.state.answer } ],
     }
-    debugger
     postDispatch = () => {
-      debugger
       this.questionInput.clearText();
       this.answerInput.clearText();
       this.changeQuestion('');

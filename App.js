@@ -10,6 +10,17 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import NewQuestionView from './components/NewQuestionView';
 
+
+// Attempt to clean up this isMounted bug.
+global.__old_console_warn = global.__old_console_warn || console.warn;
+global.console.warn = str => {
+  let tst = (str || '') + '';
+  if (tst.startsWith('Warning: isMounted(...) is deprecated')) {
+    return;
+  }
+  return global.__old_console_warn.apply(console, [str]);
+};
+
 const Tabs = createMaterialTopTabNavigator({
   Decks: {
     screen: DeckList,
