@@ -86,7 +86,6 @@ const MainNavigator = createStackNavigator({
 
 export default class App extends React.Component {
   componentDidMount() {
-    debugger
     setLocalNotification();
   }
   render() {
