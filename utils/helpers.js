@@ -3,6 +3,11 @@ import { AsyncStorage } from 'react-native'
 
 const NOTIFICATION_KEY = 'UdaciCards:notifications'
 
+// Note: I borrowed a lot of this code from the UdaciFitness in class app so it looks quite similar.
+// They both pretty much required the same thing and I gave this a good look down and figured it was exactly
+// what I wanted in my project for the notification implementation. Of course the key and the messaging are altered and when
+// the 'setLocalNotification' call is called is something I had to 'time'.
+
 export function clearLocalNotification () {
   return AsyncStorage.removeItem(NOTIFICATION_KEY)
     .then(Notifications.cancelAllScheduledNotificationsAsync)
