@@ -10,33 +10,11 @@ class DeckList extends Component {
     decks: {}
   }
 
-  // fetchDecks = () => {
-  //   API.fetchDecks()
-  //   .then((keyValueDecks) => {
-  //     let tempDecks = Object.keys(keyValueDecks).map((key) => {
-  //       return {
-  //         key: key,
-  //         title: keyValueDecks[key].title,
-  //         cards: keyValueDecks[key].cards,
-  //       }
-  //     });
-      
-  //     this.setState({
-  //       decks: tempDecks,
-  //     });
-  //   });
-  // }
-
   componentDidMount() {
     const { dispatch } = this.props;
     getDecks()(dispatch);
   }
-
-  // componentWillReceiveProps() {
-  //   //TODO: this needs to be called on a focus or will focus
-  //   this.fetchDecks();
-  // }
-
+  
   render() {
     return (
       <View style={styles.deckTitleList}>

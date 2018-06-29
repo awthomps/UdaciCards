@@ -16,14 +16,13 @@ class DeckView extends Component {
     return (
       <View style={{flex: 1}}>
         <View style={styles.deckInfoView}>
-          
           <Text style={styles.deckTitleText}>Title: {this.props.navigation.state.params.deck.title}</Text>
           <Text style={styles.deckCardsText}>Cards: {this.props.navigation.state.params.deck.cards.length}</Text>
         </View>
         <StartQuizButton
-        navigation={this.props.navigation}
-        title={this.props.navigation.state.params.deck.title}
-        moreThanOneCard={this.props.navigation.state.params.deck.cards.length > 0}
+          navigation={this.props.navigation}
+          title={this.props.navigation.state.params.deck.title}
+          moreThanOneCard={this.props.navigation.state.params.deck.cards.length > 0}
         />
         <CreateNewQuestionButton
           navigation={this.props.navigation}

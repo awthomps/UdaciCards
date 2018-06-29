@@ -51,7 +51,7 @@ class QuizView extends Component {
         if(nextCard >= this.props.cards.length) {
           nextCard--; // decrement to avoid any worst case oob errors.
           nextStep = results; // go to results screen state
-          
+
           // Delay notification because today the user has quized
           clearLocalNotification()
             .then(setLocalNotification)
@@ -60,10 +60,10 @@ class QuizView extends Component {
         }
         break;
       case results:
-        // Navigate back to deck
+        // Don't need to do anything here
         break;
       default:
-        // Something is wrong
+        // This case should not happen
         break;
     }
 
